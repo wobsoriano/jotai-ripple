@@ -1,12 +1,13 @@
 
 import { effect, track } from 'ripple'
-import { countAtom } from './atoms'
+import { countAtom, citiesAtom } from './atoms'
 import { getDefaultStore } from 'jotai/vanilla'
 import { useAtom } from './lib/useAtom.ripple'
 
 export component App() {
   <BearCounter />
   <Controls />
+  <CityList />
 }
 
 component BearCounter() {
@@ -25,4 +26,16 @@ component Controls() {
   })
 
   <button onClick={() => setCount(c => c + 1)}>{"One up"}</button>
+}
+
+component CityList() {
+  const [cities, setCities] = useAtom(citiesAtom)
+
+  <ul>
+    for (const item of @cities) {
+      <li>{item}</li>
+    }
+  </ul>
+
+  <button onClick={() => setCities(c => [...c, 'New York'])}>{"Add New York"}</button>
 }
