@@ -1,0 +1,47 @@
+{
+	"name": "jotai-ripple",
+	"version": "0.0.0",
+	"description": "Flexible state management for Ripple based on Jotai",
+	"type": "module",
+	"engines": {
+		"node": ">=20.0.0"
+	},
+	"repository": {
+	  "type": "git",
+	  "url": "git+https://github.com/wobsoriano/jotai-ripple.git"
+	},
+	"bugs": "https://github.com/wobsoriano/jotai-ripple/issues",
+	"exports": {
+		".": {
+			"types": "./src/types/index.d.ts",
+			"import": "./src/lib/index.ts",
+			"default": "./src/lib/index.ts"
+		}
+	},
+	"files": ["src/lib", "src/types"],
+	"scripts": {
+		"start": "vite",
+		"dev": "vite",
+		"build": "vite build",
+		"serve": "vite preview",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+    	"release": "bumpp && npm publish"
+	},
+	"license": "MIT",
+	"devDependencies": {
+		"jotai": "^2.14.0",
+		"ripple": "^0.2.47",
+		"bumpp": "^10.2.3",
+		"prettier": "^3.6.2",
+		"prettier-plugin-ripple": "^0.2.47",
+		"typescript": "^5.9.2",
+		"vite": "^7.1.6",
+		"vite-plugin-ripple": "^0.2.47"
+	},
+	"peerDependencies": {
+		"jotai": "^2.14.0",
+		"ripple": "^0.2.47"
+	},
+	"packageManager": "pnpm@10.17.0"
+}

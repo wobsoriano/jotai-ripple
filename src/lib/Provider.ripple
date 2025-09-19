@@ -1,0 +1,25 @@
+import { createContext } from 'ripple'
+import type { Component } from 'ripple';
+import { createStore, getDefaultStore } from 'jotai/vanilla';
+
+type Store = ReturnType<typeof createStore>
+
+const StoreContext = createContext<Store | undefined>(undefined)
+
+export component Provider(props: { store?: Store, children: Component }) {
+	let storeRef
+
+	if (!props.store && !storeRef) {
+		storeRef = getDefaultStore()
+	}
+
+	StoreContext.set(props.store || storeRef)
+
+	<props.children />
+}
+
+export function useStore(options?: { store?: Store }) {
+	const store = StoreContext.get()
+
+	return options?.store || store || getDefaultStore()
+}

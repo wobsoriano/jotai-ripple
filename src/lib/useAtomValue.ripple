@@ -1,0 +1,28 @@
+import type { Atom } from 'jotai/vanilla';
+import type { AwaitedAccessorOrResource } from './useAtom';
+import { useStore } from './Provider.ripple';
+import { effect, track } from 'ripple';
+
+type Store = any
+
+interface Options {
+	store?: Store;
+}
+
+export function useAtomValue(atom: Atom<any>, options?: Options) {
+	const store = useStore(options);
+	const initial = store.get(atom);
+
+	let atomValue = track(initial);
+
+	effect(() => {
+		const unsub = store.sub(atom, () => {
+			const nextValue = store.get(atom);
+			@atomValue = nextValue;
+		});
+
+		return () => unsub();
+	});
+
+	return [atomValue]
+}

@@ -1,0 +1,28 @@
+
+import { effect, track } from 'ripple'
+import { countAtom } from './atoms'
+import { getDefaultStore } from 'jotai/vanilla'
+import { useAtom } from './lib/useAtom.ripple'
+
+export component App() {
+  <BearCounter />
+  <Controls />
+}
+
+component BearCounter() {
+  const [count] = useAtom(countAtom)
+
+  <h1>{`${@count} bears around here...`}</h1>
+}
+
+component Controls() {
+  const [count, setCount] = useAtom(countAtom)
+  let doubledCount = track(() => @count * 2)
+
+  effect(() => {
+    console.log('count', @count)
+    console.log('doubledCount', @doubledCount)
+  })
+
+  <button onClick={() => setCount(@count + 1)}>{"One up"}</button>
+}

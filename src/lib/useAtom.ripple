@@ -1,0 +1,13 @@
+import type { Atom, WritableAtom } from 'jotai/vanilla';
+import { useAtomValue } from './useAtomValue.ripple';
+import { useSetAtom } from './useSetAtom.ripple';
+
+type Options = Parameters<typeof useAtomValue>[1]
+
+export function useAtom(atom: Atom<any> | WritableAtom<any, any, any>, options?: Options) {
+	const state = useAtomValue(atom, options);
+	return [
+		state[0],
+		useSetAtom(atom, options)
+	];
+}

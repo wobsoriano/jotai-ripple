@@ -1,0 +1,22 @@
+import type { WritableAtom } from 'jotai/vanilla';
+import { useStore } from './Provider.ripple';
+
+type Store = ReturnType<typeof useStore>
+
+interface Options {
+	store?: Store
+}
+
+export function useSetAtom(atom: WritableAtom<any, any[], any>, options?: Options) {
+	const store = useStore(options);
+	function setAtom(...args) {
+		if (import.meta.env?.MODE !== 'production' && !('write' in atom)) {
+		  // useAtom can pass non writable atom with wrong type assertion,
+		  // so we should check here.
+		  throw new Error('not writable atom')
+		}
+		return store.set(atom, ...args);
+	}
+
+	return setAtom;
+}
