@@ -24,5 +24,5 @@ component Controls() {
     console.log('doubledCount', @doubledCount)
   })
 
-  <button onClick={() => setCount(@count + 1)}>{"One up"}</button>
+  <button onClick={() => setCount(c => c + 1)}>{"One up"}</button>
 }

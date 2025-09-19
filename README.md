@@ -1,49 +1,39 @@
-# Ripple Basic Template
+# jotai-ripple
 
-A minimal Ripple application template with TypeScript and Vite.
+Flexible state management for Ripple based on Jotai.
 
-## Getting Started
+## Installation
 
-1. Install dependencies:
+```bash
+npm install jotai jotai-ripple
+```
 
-    ```bash
-    npm install # or pnpm or yarn
-    ```
+## Usage
 
-2. Start the development server:
+```ts
+import { track } from 'ripple'
+import { useAtom } from 'jotai-ripple'
 
-    ```bash
-    npm run dev
-    ```
+const countAtom = atom(0)
 
-3. Build for production:
-    ```bash
-    npm run build
-    ```
+export component App() {
+  <BearCounter />
+  <Controls />
+}
 
-## Code Formatting
+component BearCounter() {
+  const [count] = useAtom(countAtom)
 
-This template includes Prettier with the Ripple plugin for consistent code formatting.
+  <h1>{`${@count} bears around here...`}</h1>
+}
 
-### Available Commands
+component Controls() {
+  const [_, setCount] = useAtom(countAtom)
 
-- `npm run format` - Format all files
-- `npm run format:check` - Check if files are formatted correctly
+  <button onClick={() => setCount(c => c + 1)}>{"One up"}</button>
+}
+```
 
-### Configuration
+## License
 
-Prettier is configured in `.prettierrc` with the following settings:
-
-- Uses tabs for indentation
-- Single quotes for strings
-- 100 character line width
-- Includes the `prettier-plugin-ripple` for `.ripple` file formatting
-
-### VS Code Integration
-
-For the best development experience, install the [Prettier VS Code extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and the [Ripple VS Code extension](https://marketplace.visualstudio.com/items?itemName=ripplejs.ripple-vscode-plugin).
-
-## Learn More
-
-- [Ripple Documentation](https://github.com/trueadm/ripple)
-- [Vite Documentation](https://vitejs.dev/)
+MIT
