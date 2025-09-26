@@ -7,8 +7,8 @@
 		"node": ">=20.0.0"
 	},
 	"repository": {
-	  "type": "git",
-	  "url": "git+https://github.com/wobsoriano/jotai-ripple.git"
+		"type": "git",
+		"url": "git+https://github.com/wobsoriano/jotai-ripple.git"
 	},
 	"bugs": "https://github.com/wobsoriano/jotai-ripple/issues",
 	"exports": {
@@ -18,7 +18,10 @@
 			"default": "./src/lib/index.ts"
 		}
 	},
-	"files": ["src/lib", "src/types"],
+	"files": [
+		"src/lib",
+		"src/types"
+	],
 	"scripts": {
 		"start": "vite",
 		"dev": "vite",
@@ -26,22 +29,22 @@
 		"serve": "vite preview",
 		"format": "prettier --write .",
 		"format:check": "prettier --check .",
-    	"release": "bumpp && npm publish"
+		"release": "bumpp && npm publish"
 	},
 	"license": "MIT",
 	"devDependencies": {
-		"jotai": "^2.14.0",
-		"ripple": "^0.2.47",
 		"bumpp": "^10.2.3",
+		"jotai": "^2.15.0",
 		"prettier": "^3.6.2",
-		"prettier-plugin-ripple": "^0.2.47",
+		"prettier-plugin-ripple": "^0.2.80",
+		"ripple": "^0.2.80",
 		"typescript": "^5.9.2",
-		"vite": "^7.1.6",
-		"vite-plugin-ripple": "^0.2.47"
+		"vite": "^7.1.7",
+		"vite-plugin-ripple": "^0.2.80"
 	},
 	"peerDependencies": {
 		"jotai": "^2.14.0",
 		"ripple": "^0.2.47"
 	},
-	"packageManager": "pnpm@10.17.0"
+	"packageManager": "pnpm@10.17.1"
 }
