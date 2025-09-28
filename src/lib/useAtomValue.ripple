@@ -1,5 +1,4 @@
 import type { Atom } from 'jotai/vanilla';
-import type { AwaitedAccessorOrResource } from './useAtom';
 import { useStore } from './Provider.ripple';
 import { effect, track } from 'ripple';
 
