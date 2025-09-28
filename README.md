@@ -39,7 +39,7 @@ component Controls() {
 An atom represents a piece of state. All you need is to specify an initial value, which can be primitive values like strings and numbers, objects and arrays. You can create as many primitive atoms as you want.
 
 ```ts
-import { atom } from 'solid-jotai'
+import { atom } from 'jotai-ripple'
 
 const countAtom = atom(0)
 const countryAtom = atom('Japan')
