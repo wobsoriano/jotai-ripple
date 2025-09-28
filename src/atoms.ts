@@ -1,6 +1,19 @@
-import { atom } from 'jotai/vanilla';
+import { atom } from 'jotai/vanilla'
 
-export const countAtom = atom(0);
-export const doubledCountAtom = atom((get) => get(countAtom) * 2);
+export const animeAtom = atom([
+  {
+    title: 'Ghost in the Shell',
+    year: 1995,
+    watched: true
+  },
+  {
+    title: 'Serial Experiments Lain',
+    year: 1998,
+    watched: false
+  }
+])
 
-export const citiesAtom = atom(['Tokyo', 'Kyoto', 'Osaka'])
+export const progressAtom = atom((get) => {
+  const anime = get(animeAtom)
+  return anime.filter((item) => item.watched).length / anime.length
+})

@@ -1,41 +1,41 @@
+import { useAtom, useAtomValue, useSetAtom } from './lib'
+import { animeAtom, progressAtom } from './atoms'
 
-import { effect, track } from 'ripple'
-import { countAtom, citiesAtom } from './atoms'
-import { getDefaultStore } from 'jotai/vanilla'
-import { useAtom } from './lib/useAtom.ripple'
-
-export component App() {
-  <BearCounter />
-  <Controls />
-  <CityList />
-}
-
-component BearCounter() {
-  const [count] = useAtom(countAtom)
-
-  <h1>{`${@count} bears around here...`}</h1>
-}
-
-component Controls() {
-  const [count, setCount] = useAtom(countAtom)
-  let doubledCount = track(() => @count * 2)
-
-  effect(() => {
-    console.log('count', @count)
-    console.log('doubledCount', @doubledCount)
-  })
-
-  <button onClick={() => setCount(c => c + 1)}>{"One up"}</button>
-}
-
-component CityList() {
-  const [cities, setCities] = useAtom(citiesAtom)
+component AnimeList() {
+  const [anime] = useAtom(animeAtom)
 
   <ul>
-    for (const item of @cities) {
-      <li>{item}</li>
+    for (const item of @anime) {
+      <li>{item.title}</li>
     }
   </ul>
+}
 
-  <button onClick={() => setCities(c => [...c, 'New York'])}>{"Add New York"}</button>
+component AddAnime() {
+  const setAnime = useSetAtom(animeAtom)
+
+  <button onClick={() => {
+    setAnime((anime) => [
+      ...anime,
+      {
+        title: 'Cowboy Bebop',
+        year: 1998,
+        watched: false
+      }
+    ])
+  }}>
+    {'Add Cowboy Bebop'}
+  </button>
+}
+
+component ProgressTracker() {
+  const progress = useAtomValue(progressAtom)
+
+  <div>{`${Math.trunc(@progress * 100)}% watched`}</div>
+}
+
+export component App(){
+  <AnimeList />
+  <AddAnime />
+  <ProgressTracker />
 }
