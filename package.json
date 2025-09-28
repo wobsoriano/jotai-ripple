@@ -1,6 +1,6 @@
 {
 	"name": "jotai-ripple",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Flexible state management for Ripple based on Jotai",
 	"type": "module",
 	"engines": {
