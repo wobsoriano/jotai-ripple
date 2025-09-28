@@ -65,7 +65,7 @@ export component AnimeApp() {
       }
     ])
   }}>
-    Add Cowboy Bebop
+    {'Add Cowboy Bebop'}
   </button>
 }
 ```
