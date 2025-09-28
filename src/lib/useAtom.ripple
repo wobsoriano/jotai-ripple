@@ -7,7 +7,7 @@ type Options = Parameters<typeof useAtomValue>[1]
 export function useAtom(atom: Atom<any> | WritableAtom<any, any, any>, options?: Options) {
 	const state = useAtomValue(atom, options);
 	return [
-		state[0],
+		state,
 		useSetAtom(atom, options)
 	];
 }

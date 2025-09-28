@@ -23,5 +23,5 @@ export function useAtomValue(atom: Atom<any>, options?: Options) {
 		return () => unsub();
 	});
 
-	return [atomValue]
+	return atomValue
 }
