@@ -36,11 +36,11 @@
 		"bumpp": "^10.2.3",
 		"jotai": "^2.15.0",
 		"prettier": "^3.6.2",
-		"prettier-plugin-ripple": "^0.2.89",
-		"ripple": "^0.2.89",
+		"prettier-plugin-ripple": "^0.2.91",
+		"ripple": "^0.2.91",
 		"typescript": "^5.9.2",
 		"vite": "^7.1.7",
-		"vite-plugin-ripple": "^0.2.89"
+		"vite-plugin-ripple": "^0.2.91"
 	},
 	"peerDependencies": {
 		"jotai": "^2.14.0",
