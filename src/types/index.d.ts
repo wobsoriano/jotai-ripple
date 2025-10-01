@@ -1,5 +1,6 @@
+// Temporary types file until .ripple files support overload functions
 import type { Atom, ExtractAtomArgs, ExtractAtomResult, ExtractAtomValue, WritableAtom } from 'jotai/vanilla';
-import type { Component, Tracked } from 'ripple';
+import type { Component, PropsWithChildren, Tracked } from 'ripple';
 import type { getDefaultStore } from 'jotai/vanilla';
 
 type SetAtom<Args extends unknown[], Result> = (...args: Args) => Result
@@ -12,7 +13,7 @@ declare function useSetAtom<Value, Args extends unknown[], Result>(
     atom: WritableAtom<Value, Args, Result>,
     options?: Options
 ): SetAtom<Args, Result>
-  
+
   declare function useSetAtom<
     AtomType extends WritableAtom<unknown, unknown[], unknown>,
   >(
@@ -33,7 +34,7 @@ declare function useAtomValue<AtomType extends Atom<unknown>>(atom: AtomType, op
 
 declare function useStore(options?: Options): Store;
 
-declare function Provider(props: { store?: Store, children: Component }): Component;
+declare function Provider(props: PropsWithChildren<{ store?: Store }>): Component;
 
 export {
     useAtom,
