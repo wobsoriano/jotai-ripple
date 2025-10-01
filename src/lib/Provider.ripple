@@ -5,7 +5,7 @@ import { createStore, getDefaultStore } from 'jotai/vanilla';
 type Store = ReturnType<typeof createStore>
 
 const StoreContext = new Context(undefined)
-console.log('StoreContext', StoreContext)
+
 export component Provider(props: PropsWithChildren<{ store?: Store }>) {
 	StoreContext.set(props.store || getDefaultStore())
 
