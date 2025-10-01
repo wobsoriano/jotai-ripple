@@ -15,10 +15,10 @@ An atom represents a piece of state. All you need is to specify an initial value
 ```ts
 import { atom } from 'jotai-ripple'
 
-const countAtom = atom(0)
-const countryAtom = atom('Japan')
-const citiesAtom = atom(['Tokyo', 'Kyoto', 'Osaka'])
-const animeAtom = atom([
+export const countAtom = atom(0)
+export const countryAtom = atom('Japan')
+export const citiesAtom = atom(['Tokyo', 'Kyoto', 'Osaka'])
+export const animeAtom = atom([
   {
     title: 'Ghost in the Shell',
     year: 1995,
@@ -32,7 +32,7 @@ const animeAtom = atom([
 ])
 
 // Derived atoms
-const progressAtom = atom((get) => {
+export const progressAtom = atom((get) => {
   const anime = get(animeAtom)
   return anime.filter((item) => item.watched).length / anime.length
 })
