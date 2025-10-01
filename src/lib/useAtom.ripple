@@ -8,6 +8,6 @@ export function useAtom(atom: Atom<any> | WritableAtom<any, any, any>, options?:
 	const state = useAtomValue(atom, options);
 	return [
 		state,
-		useSetAtom(atom, options)
+		useSetAtom(atom as any, options)
 	];
 }
