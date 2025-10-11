@@ -33,18 +33,18 @@
 	},
 	"license": "MIT",
 	"devDependencies": {
-		"bumpp": "^10.2.3",
+		"bumpp": "^10.3.1",
 		"jotai": "^2.15.0",
 		"prettier": "^3.6.2",
-		"prettier-plugin-ripple": "^0.2.98",
-		"ripple": "^0.2.98",
+		"prettier-plugin-ripple": "^0.2.120",
+		"ripple": "^0.2.120",
 		"typescript": "^5.9.3",
-		"vite": "^7.1.7",
-		"vite-plugin-ripple": "^0.2.98"
+		"vite": "^7.1.9",
+		"vite-plugin-ripple": "^0.2.120"
 	},
 	"peerDependencies": {
 		"jotai": "^2.14.0",
 		"ripple": "^0.2.98"
 	},
-	"packageManager": "pnpm@10.17.1"
+	"packageManager": "pnpm@10.18.2"
 }
