@@ -1,0 +1,41 @@
+import { expect, it } from 'vitest'
+import { atom, useAtomValue, useSetAtom } from '../src/lib'
+import { flushSync } from 'ripple'
+import type { PropsWithChildren } from 'ripple'
+
+it('useSetAtom with write without an argument', async () => {
+  const countAtom = atom(0)
+  const incrementCountAtom = atom(null, (get, set) =>
+    set(countAtom, get(countAtom) + 1))
+
+  component Button(props: PropsWithChildren<{ cb: () => void }>) {
+    <button onClick={props.cb}>{props.children}</button>
+  }
+
+  component Displayer() {
+    const count = useAtomValue(countAtom)
+
+    <p>{`count: ${@count}`}</p>
+  }
+
+  component Updater() {
+    const setCount = useSetAtom(incrementCountAtom)
+    <Button cb={setCount}>{'increment'}</Button>
+  }
+
+  component Parent() {
+    <Displayer />
+    <Updater />
+  }
+
+  render(Parent)
+  flushSync();
+
+  expect(container.querySelector('p').textContent).toBe('count: 0');
+
+  const button = container.querySelector('button');
+  button.click();
+  flushSync();
+
+  expect(container.querySelector('p').textContent).toBe('count: 1');
+})
