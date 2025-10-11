@@ -1,0 +1,62 @@
+import { expect, it } from 'vitest'
+import { atom, createStore, Provider, useAtom } from '../src/lib'
+
+it('uses initial values from provider', async () => {
+  const countAtom = atom(1)
+  const petAtom = atom('cat')
+
+  const store = createStore()
+  store.set(countAtom, 0)
+  store.set(petAtom, 'dog')
+
+  component Display() {
+    const [count] = useAtom(countAtom)
+    const [pet] = useAtom(petAtom)
+
+    <p>{`count: ${@count}`}</p>
+    <p>{`pet: ${@pet}`}</p>
+  }
+
+  component App() {
+    <Provider store={store}>
+      <Display />
+    </Provider>
+  }
+
+  render(App)
+
+  expect(container.querySelectorAll('p')[0].textContent).toBe('count: 0');
+  expect(container.querySelectorAll('p')[1].textContent).toBe('pet: dog');
+})
+
+it('only uses initial value from provider for specific atom', async () => {
+  const countAtom = atom(1)
+  const petAtom = atom('cat')
+
+  const store = createStore()
+  store.set(petAtom, 'dog')
+
+  component Display() {
+    const [count] = useAtom(countAtom)
+    const [pet] = useAtom(petAtom)
+
+    <p>{`count: ${@count}`}</p>
+    <p>{`pet: ${@pet}`}</p>
+  }
+
+  component App() {
+    <Provider store={store}>
+      <Display />
+    </Provider>
+  }
+
+  render(App)
+
+  expect(container.querySelectorAll('p')[0].textContent).toBe('count: 1');
+  expect(container.querySelectorAll('p')[1].textContent).toBe('pet: dog');
+})
+
+
+it('renders correctly without children', () => {
+  render(Provider)
+})
